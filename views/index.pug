@@ -1,0 +1,30 @@
+//File path: views/index.pug
+// Pug template
+html
+  head
+    // Set the title of the HTML page
+    title Pug Example
+
+    // Internal CSS styles for the page
+    style.
+      h1 {
+        color: green;
+      }
+
+    link(rel="stylesheet", href="static/style.css")
+
+  body
+    // Display the main heading of the page
+    h1 GeeksForGeeks | Pug Example
+    
+    // Display a subheading
+    h4 This data is coming from Server:
+
+    // Display data received from Express server
+    p The server sent the following data: #[strong #{message}]
+
+    // Display the list of courses using the each loop
+    ul
+      each course in courses
+        // Display each course as a list item
+        li= course
