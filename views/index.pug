@@ -2,6 +2,7 @@
 // Pug template
 html
   head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     // Set the title of the HTML page
     title Pug Example
 
@@ -28,3 +29,11 @@ html
       each course in courses
         // Display each course as a list item
         li= course
+    
+    br
+    
+    button(id="signup", class="button-61", role="button") Sign-up
+    br
+    button(id="signin", class="button-61", role="button") Sign-in
+    
+    script(src="static/script.js")
