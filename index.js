@@ -27,16 +27,15 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-/*
+
 app.listen(port, ()=> {
   console.log(`Server http://localhost:${port}`);
 });
-*/
 
 // Create HTTPS server
 const httpsServer = https.createServer({
-  key: fs.readFileSync('/etc/ssl/certs/flashapp99.run.place.key'),
-  cert: fs.readFileSync('/etc/ssl/certs/flashapp99.run.place.cer')
+  key: fs.readFileSync('/home/kunteinzo/localhost.key'/*'/etc/ssl/certs/flashapp99.run.place.key'*/),
+  cert: fs.readFileSync('/home/kunteinzo/localhost.crt'/*'/etc/ssl/certs/flashapp99.run.place.cer'*/)
 }, app);
 
 // Start the server
