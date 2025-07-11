@@ -1,0 +1,36 @@
+html
+    head
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Dice Game
+    
+    body
+        h1(id="h1") Dice Game
+        
+        div #{random}
+        
+        button(id="btn") Generate
+        
+        table
+            tr
+                th(style="width: 100px;") Test
+                th One
+            tr
+                td Cksnn
+                td jsjkz
+        
+        script.
+            try {
+                function getRandomInt(min, max) {
+                    const randomBuffer = new Uint32Array(1);
+                    window.crypto.getRandomValues(randomBuffer);
+                    let randomNumber = randomBuffer / (0xffffffff + 1);
+                    min = Math.ceil(min);
+                    max = Math.floor(max);
+                    return Math.floor(randomNumber * (max - min + 1)) + min;
+                }
+                document.getElementById('btn').addEventListener('click', () => {
+                    document.getElementById('h1').innerText = getRandomInt(1, 6);
+                });
+            } catch (e) {
+                alert(e);
+            }
