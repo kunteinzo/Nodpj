@@ -2,24 +2,59 @@ html
     head
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title Dice Game
-    
+        style.
+            .value {
+                padding: 8px;
+                margin: 8px;
+            }
     body
-        h1(id="h1") Dice Game
+        h1 Dice Game
         
-        div #{random}
+        div(id="h1") Random
         
         button(id="btn") Generate
         
-        table
-            tr
-                th(style="width: 100px;") Test
-                th One
-            tr
-                td Cksnn
-                td jsjkz
+        div(style="margin: 8px; padding: 8px;") Bet By Number
+        div
+            span(class="value") 1
+            span(class="value") 2
+            span(class="value") 3
+            span(class="value") 4
+            span(class="value") 5
+            span(class="value") 6
+        br
+        div Bet Number: &emsp;
+            input(type="number", name="betnum", value="1", id="betnum")
+            span(id="info", style="display: none;") Invalid Bet Number
+        br
+        div Bet Value: &emsp;
+            input(type="number", name="betval", value="500", id="betval")
+            span(id="valinfo", style="display: none;") Invalid Bet Value
         
         script.
             try {
+                const bet = document.getElementById('betnum');
+                const betval = document.getElementById('betval');
+                const info = document.getElementById('info');
+                const valinfo = document.getElementById('valinfo');
+                const btn = document.getElementById('btn');
+                const values = document.getElementsByClassName('value');
+
+                betval.addEventListener('change', ()=>{
+                    if (betval.value < 500 || betval.value > 100000) {
+                        valinfo.style.display = "block";
+                    } else {
+                        valinfo.style.display = "none";
+                    }
+                });
+                bet.addEventListener('change', ()=>{
+                    if (bet.value < 1 || bet.value > 6) {
+                        info.style.display = "block";
+                    } else {
+                        info.style.display = "none";
+                    }
+                });
+                
                 function getRandomInt(min, max) {
                     const randomBuffer = new Uint32Array(1);
                     window.crypto.getRandomValues(randomBuffer);
@@ -28,8 +63,15 @@ html
                     max = Math.floor(max);
                     return Math.floor(randomNumber * (max - min + 1)) + min;
                 }
-                document.getElementById('btn').addEventListener('click', () => {
-                    document.getElementById('h1').innerText = getRandomInt(1, 6);
+                btn.addEventListener('click', () => {
+                    for (let i=0;i<6;i++) {
+                        values[i].style.backgroundColor = 'white';
+                        values[i].style.color = 'black';
+                    }
+                    let x = getRandomInt(0,5);
+                    values[x].style.backgroundColor = 'blue';
+                    values[x].style.color = 'white';
+
                 });
             } catch (e) {
                 alert(e);
