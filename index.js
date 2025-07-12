@@ -30,6 +30,14 @@ app.get('/dice-game', (req, res) => {
   res.render('dice-game');
 });
 
+app.get('/api', (req, res) => {
+  res.setHeader('content-type', 'application/json');
+  fetch('http://example.com/', {method: 'GET', headers: {'Content-Type': 'application/json'}})
+  .then(((response) => response.text()))
+  .then(((text) => console.log(text)));
+  res.send({'message':'OK'});
+});
+
 /*
 // Create HTTPS server
 const httpsServer = https.createServer({
