@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
     res.send({"success": true});
 });
 
+app.post('/new', (req, res)=>{
+    res.send({"success": true});
+});
+
 app.listen(8000, ()=>{
     console.log(`API Server at: http://0.0.0.0:8000`);
 });
