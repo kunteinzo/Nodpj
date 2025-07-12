@@ -32,10 +32,9 @@ app.get('/dice-game', (req, res) => {
 
 app.get('/api', (req, res) => {
   res.setHeader('content-type', 'application/json');
-  fetch('http://example.com/', {method: 'GET', headers: {'Content-Type': 'application/json'}})
-  .then(((response) => response.text()))
-  .then(((text) => console.log(text)));
-  res.send({'message':'OK'});
+  fetch('https://mocki.io/v1/65dd5a2c-3400-440e-bae1-d6e35a1573d3', {method: 'GET', headers: {'Content-Type': 'application/json'}})
+  .then(((response) => response.json()))
+  .then(((text) => res.send(text)));
 });
 
 /*
