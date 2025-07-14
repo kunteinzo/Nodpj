@@ -9,6 +9,8 @@ app.get('/', (req, res) => {
 
 app.post('/new', (req, res)=>{
     res.send({"success": true});
+    console.log('There is a request on /new');
+    console.log(req.headers);
 });
 
 app.listen(8000, ()=>{
